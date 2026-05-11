@@ -17,10 +17,10 @@ import { useUser } from '@clerk/nextjs';
 import { MockInterview } from '@/utils/schema';
 import { db } from '@/utils/db';
 import moment from 'moment';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 function AddNewInterview() {
     const [openDailog, setOpenDailog] = useState(false)
-    const [jobPosition, setJobPosition] = useState()
+    const [jobPosition, setJobPosition] = useState('')
     const [jobDescription, setJobDescription] = useState()
     const [jobExperience, setJobExperience] = useState()
     const [loading, setLoading] = useState(false)
@@ -46,7 +46,7 @@ function AddNewInterview() {
                 const resp = await db.insert(MockInterview)
                     .values({
                         mockId: uuidv4(),
-                        jsonMockResp: data,
+                        jsonMockResp: JSON.stringify(data.questions),
                         jobPosition: jobPosition,
                         jobDescription: jobDescription,
                         jobExperience: jobExperience,
@@ -72,9 +72,9 @@ function AddNewInterview() {
         <div>
             <div className='p-10 border rounded-lg bg-secondary hover:scale-105 hover:shadow-md cursor-pointer transition-all'
                 onClick={() => setOpenDailog(true)}>
-                <h2 className='ftext-lg text-center'>+ Add New</h2>
+                <h2 className='text-lg text-center'>+ Add New</h2>
             </div>
-            <Dialog open={openDailog}>
+            <Dialog open={openDailog} onOpenChange={setOpenDailog}>
 
                 <DialogContent className="max-w-2xl">
                     <DialogHeader>
