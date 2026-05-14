@@ -23,6 +23,7 @@ function RecordAnswerSection({ mockInterviewQuestion, activeQuestionIndex, inter
         results,
         startSpeechToText,
         stopSpeechToText,
+        setResults
     } = useSpeechToText({
         continuous: true,
         useLegacyResults: false,
@@ -63,11 +64,11 @@ function RecordAnswerSection({ mockInterviewQuestion, activeQuestionIndex, inter
 
             if (resp) {
                 toast('User Answer Added Successfully In Database')
+                setUserAnswer('');
             } else {
                 toast('Error while adding to db')
             }
-
-            setUserAnswer('')
+            setResults([]);
         } catch (error) {
             console.error(error)
             toast('Failed to save answer, please try again')
