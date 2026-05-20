@@ -14,7 +14,6 @@ function Interview({ params }) {
     useEffect(() => {
         const GetInterviewDetails = async () => {
             try {
-                // ✅ Use an API route instead of direct DB call
                 const res = await fetch(`/api/interview/${interviewId}`)
                 const data = await res.json()
                 setInterviewData(data)
@@ -29,9 +28,9 @@ function Interview({ params }) {
         <div className='my-8 px-4 max-w-5xl mx-auto'>
 
             {/* Page header */}
-            <div className='mb-6'>
-                <h2 className='font-medium text-2xl text-gray-900'>Let's get started</h2>
-                <p className='text-sm text-gray-500 mt-1'>Review your details and enable your camera before beginning</p>
+            <div className='mb-8'>
+                <h2 className='font-semibold text-2xl text-white'>Let's get started</h2>
+                <p className='text-sm text-indigo-300 mt-1'>Review your details and enable your camera before beginning</p>
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
@@ -40,31 +39,31 @@ function Interview({ params }) {
                 <div className='flex flex-col gap-4'>
 
                     {/* Job details card */}
-                    <div className='rounded-xl border border-gray-200 p-5'>
-                        <p className='text-xs font-medium text-gray-400 uppercase tracking-wider mb-3'>Job details</p>
-                        <div className='divide-y divide-gray-100'>
+                    <div className='rounded-2xl border border-indigo-500/30 bg-white/5 backdrop-blur-sm p-5'>
+                        <p className='text-xs font-medium text-indigo-400 uppercase tracking-wider mb-3'>Job details</p>
+                        <div className='divide-y divide-indigo-500/20'>
                             <div className='py-3'>
-                                <p className='text-xs text-gray-400 mb-1'>Role / Position</p>
-                                <p className='text-sm text-gray-900'>{interviewData?.jobPosition}</p>
+                                <p className='text-xs text-indigo-400 mb-1'>Role / Position</p>
+                                <p className='text-sm text-white'>{interviewData?.jobPosition}</p>
                             </div>
                             <div className='py-3'>
-                                <p className='text-xs text-gray-400 mb-1'>Tech Stack</p>
-                                <p className='text-sm text-gray-900'>{interviewData?.jobDescription}</p>
+                                <p className='text-xs text-indigo-400 mb-1'>Tech Stack</p>
+                                <p className='text-sm text-white'>{interviewData?.jobDescription}</p>
                             </div>
                             <div className='py-3 pb-0'>
-                                <p className='text-xs text-gray-400 mb-1'>Years of experience</p>
-                                <p className='text-sm text-gray-900'>{interviewData?.jobExperience}</p>
+                                <p className='text-xs text-indigo-400 mb-1'>Years of experience</p>
+                                <p className='text-sm text-white'>{interviewData?.jobExperience}</p>
                             </div>
                         </div>
                     </div>
 
                     {/* Info card */}
-                    <div className='rounded-xl border border-yellow-200 bg-yellow-50 p-5'>
+                    <div className='rounded-2xl border border-indigo-500/30 bg-indigo-500/10 p-5'>
                         <div className='flex items-center gap-2 mb-2'>
-                            <Lightbulb className='h-4 w-4 text-yellow-700' />
-                            <p className='text-sm font-medium text-yellow-800'>Before you begin</p>
+                            <Lightbulb className='h-4 w-4 text-indigo-300' />
+                            <p className='text-sm font-medium text-indigo-200'>Before you begin</p>
                         </div>
-                        <p className='text-sm text-yellow-700 leading-relaxed'>
+                        <p className='text-sm text-indigo-300/70 leading-relaxed'>
                             {process.env.NEXT_PUBLIC_INFORMATION}
                         </p>
                     </div>
@@ -81,27 +80,31 @@ function Interview({ params }) {
                                 setCamError(true)
                             }}
                             mirrored={true}
-                            className='rounded-xl w-full'
+                            className='rounded-2xl w-full border border-indigo-500/30'
                             style={{ height: 280 }}
                         />
                     ) : (
-                        <div className='rounded-xl border border-dashed border-gray-300 bg-gray-50 flex flex-col items-center justify-center gap-4 h-64'>
-                            <div className='rounded-full bg-white border border-gray-200 p-4'>
-                                <WebcamIcon className='h-8 w-8 text-gray-400' />
+                        <div className='rounded-2xl border border-dashed border-indigo-500/30 bg-white/5 backdrop-blur-sm flex flex-col items-center justify-center gap-4 h-64'>
+                            <div className='rounded-full bg-indigo-500/20 border border-indigo-500/30 p-4'>
+                                <WebcamIcon className='h-8 w-8 text-indigo-300' />
                             </div>
                             <div className='text-center'>
-                                <p className='text-sm font-medium text-gray-700'>Camera is off</p>
-                                <p className='text-xs text-gray-400 mt-0.5'>Enable to continue</p>
+                                <p className='text-sm font-medium text-white'>Camera is off</p>
+                                <p className='text-xs text-indigo-400 mt-0.5'>Enable to continue</p>
                             </div>
                             {camError && (
-                                <p className='text-xs text-red-500 text-center px-4'>
+                                <p className='text-xs text-red-400 text-center px-4'>
                                     Camera access denied. Please allow permissions and try again.
                                 </p>
                             )}
-                            <Button variant='outline' size='sm' onClick={() => {
-                                setCamError(false)
-                                setWebCamEnable(true)
-                            }}>
+                            <Button
+                                size='sm'
+                                onClick={() => {
+                                    setCamError(false)
+                                    setWebCamEnable(true)
+                                }}
+                                className='bg-white/10 hover:bg-white/20 text-indigo-200 border border-indigo-500/30 cursor-pointer'
+                            >
                                 Enable webcam & microphone
                             </Button>
                         </div>
@@ -109,8 +112,8 @@ function Interview({ params }) {
 
                     <div className='flex justify-end'>
                         <Link href={`/dashboard/interview/${interviewId}/start`}>
-                            <Button>
-                                Start interview →
+                            <Button className='bg-indigo-600 hover:bg-indigo-500 text-white border-0 px-6 cursor-pointer'>
+                                Start Interview →
                             </Button>
                         </Link>
                     </div>

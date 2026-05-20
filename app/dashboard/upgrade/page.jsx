@@ -9,61 +9,69 @@ function page() {
 
     return (
         <div className='p-10'>
-            <div class="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-center md:gap-8">
+            <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-center md:gap-8">
 
                     {PricingPlan.map((item, index) => (
-                        <div key={index} class="rounded-2xl border border-gray-200 p-6 shadow-xs sm:px-8 lg:p-12">
-                            <div class="text-center">
-                                <h2 class="text-lg font-medium text-gray-900">
+                        <div key={index} className={`rounded-2xl p-6 sm:px-8 lg:p-12 flex flex-col gap-4 backdrop-blur-sm transition-all duration-300
+                            ${index === 1
+                                ? 'border-2 border-indigo-500 bg-indigo-600/20'
+                                : 'border border-indigo-500/30 bg-white/5'
+                            }`}>
+                            <div className="text-center">
+                                {index === 1 && (
+                                    <span className='text-xs font-medium bg-indigo-500/30 text-indigo-200 px-3 py-1 rounded-full mb-3 inline-block'>
+                                        Most popular
+                                    </span>
+                                )}
+                                <h2 className="text-lg font-medium text-white">
                                     {item.title}
-                                    <span class="sr-only">Plan</span>
+                                    <span className="sr-only">Plan</span>
                                 </h2>
 
-                                <p class="mt-2 sm:mt-4">
-                                    <strong class="text-3xl font-bold text-gray-900 sm:text-4xl"> {item.price} </strong>
-
-                                    <span class="text-sm font-medium text-gray-700">{item.duration}</span>
+                                <p className="mt-2 sm:mt-4">
+                                    <strong className="text-3xl font-bold text-white sm:text-4xl"> {item.price} </strong>
+                                    <span className="text-sm font-medium text-indigo-300">{item.duration}</span>
                                 </p>
                             </div>
 
-                            <ul class="mt-6 space-y-2">
-                                <li class="flex items-center gap-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-indigo-700">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                            <ul className="mt-2 space-y-3">
+                                <li className="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4 text-indigo-400 shrink-0">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                     </svg>
-
-                                    <span class="text-gray-700"> 10 users included </span>
+                                    <span className="text-sm text-indigo-200"> 10 users included </span>
                                 </li>
 
-                                <li class="flex items-center gap-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-indigo-700">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                <li className="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4 text-indigo-400 shrink-0">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                     </svg>
-
-                                    <span class="text-gray-700"> 2GB of storage </span>
+                                    <span className="text-sm text-indigo-200"> 2GB of storage </span>
                                 </li>
 
-                                <li class="flex items-center gap-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-indigo-700">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                <li className="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4 text-indigo-400 shrink-0">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                     </svg>
-
-                                    <span class="text-gray-700"> Email support </span>
+                                    <span className="text-sm text-indigo-200"> Email support </span>
                                 </li>
 
-                                <li class="flex items-center gap-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-indigo-700">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                <li className="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4 text-indigo-400 shrink-0">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                     </svg>
-
-                                    <span class="text-gray-700"> Help center access </span>
+                                    <span className="text-sm text-indigo-200"> Help center access </span>
                                 </li>
                             </ul>
 
                             <a href={item.link + '?prefilled_email=' + user?.primaryEmailAddress?.emailAddress}
                                 target='_blank'
-                                class="mt-8 block rounded-full border border-indigo-600 bg-white px-12 py-3 text-center text-sm font-medium text-indigo-600 hover:ring-1 hover:ring-indigo-600">
+                                className={`mt-4 block rounded-full px-12 py-3 text-center text-sm font-medium transition-all duration-200
+                                    ${index === 1
+                                        ? 'bg-indigo-600 hover:bg-indigo-500 text-white'
+                                        : 'bg-white/10 hover:bg-white/20 text-indigo-200 border border-indigo-500/30'
+                                    }`}>
                                 Get Started
                             </a>
                         </div>

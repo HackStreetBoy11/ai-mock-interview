@@ -13,9 +13,9 @@ function Header() {
     return (
         <header className="flex h-16 px-7 items-center justify-between bg-gradient-to-r from-indigo-950 via-indigo-900 to-purple-900 border-b border-indigo-800">
             <Image
-                src="/logo.svg"
-                width={120}
-                height={50}
+                src="/logo1.png"
+                width={80}
+                height={40}
                 alt="logo"
             />
             <ul className="hidden md:flex items-center gap-1 list-none">

@@ -44,33 +44,54 @@ function Feedback({ params }) {
     return (
         <div className='p-10'>
 
-
             {feedbackList?.length == 0 ?
-                <h2 className='font-bold text-xl text-gray-400'>No Interview Feedback Recorded</h2>
+                <h2 className='font-bold text-xl text-indigo-300'>No Interview Feedback Recorded</h2>
                 :
-                <><h2 className='text-3xl font-bold text-green-500'>Congratulations!</h2>
-                    <h2 className='text-2xl font-bold text-black'>Here is your interview feedback</h2>
-                    <h2 className='text-blue-800 text-lg my-3'>Your overall interview rating: <strong>{rating}/{feedbackList.length * 5}</strong></h2>
-                    <h2 className='text-sm text-gray-500'>Find below interview question with correct answer, your answer and feedback for improvement</h2>
+                <>
+                    <h2 className='text-3xl font-bold text-white'>Congratulations!</h2>
+                    <h2 className='text-xl font-semibold text-indigo-200 mt-1'>Here is your interview feedback</h2>
+                    <h2 className='text-indigo-300 text-lg my-3'>
+                        Your overall rating: <strong className='text-white'>{rating}/{feedbackList.length * 5}</strong>
+                    </h2>
+                    <h2 className='text-sm text-indigo-400'>Find below each question with the correct answer, your answer and feedback for improvement</h2>
+
                     {feedbackList && feedbackList.map((item, index) => (
-                        <Collapsible key={index} className="mt-5">
-                            <CollapsibleTrigger className='p-2 bg-secondary rounded-lg flex justify-between my-2 text-left gap-7 w-full'>
+                        <Collapsible key={index} className="mt-4">
+                            <CollapsibleTrigger className='w-full p-3 bg-white/5 border border-indigo-500/30 rounded-xl flex justify-between items-center text-left gap-7 text-sm text-indigo-200 hover:bg-white/10 transition-colors'>
                                 {item.question}
-                                <ChevronsUpDown className='h-5 w-5' />
+                                <ChevronsUpDown className='h-4 w-4 shrink-0 text-indigo-400' />
                             </CollapsibleTrigger>
                             <CollapsibleContent>
-                                <div className='flex flex-col gap-2'>
-                                    <h2 className='text-red-500 p-2 border rounded-lg'><strong>Rating: </strong>{item.rating}</h2>
-                                    <h2 className='p-2 border rounded-lg bg-red-50 text-sm text-red-700'><strong>Your Answer: </strong>{item.userAns}</h2>
-                                    <h2 className='p-2 border rounded-lg bg-green-50 text-sm text-green-700'><strong>Correct Answer: </strong>{item.correctAns}</h2>
-                                    <h2 className='p-2 border rounded-lg bg-blue-50 text-sm text-blue-700'><strong>Feedback: </strong>{item.feedback}</h2>
+                                <div className='flex flex-col gap-2 mt-2'>
+                                    <div className='p-3 border border-indigo-500/30 rounded-xl bg-white/5'>
+                                        <span className='text-xs font-medium text-indigo-400 uppercase tracking-wider'>Rating</span>
+                                        <p className='text-white font-semibold mt-0.5'>{item.rating} / 5</p>
+                                    </div>
+                                    <div className='p-3 border border-red-500/30 rounded-xl bg-red-500/10'>
+                                        <span className='text-xs font-medium text-red-400 uppercase tracking-wider'>Your Answer</span>
+                                        <p className='text-red-200 text-sm mt-0.5'>{item.userAns}</p>
+                                    </div>
+                                    <div className='p-3 border border-green-500/30 rounded-xl bg-green-500/10'>
+                                        <span className='text-xs font-medium text-green-400 uppercase tracking-wider'>Correct Answer</span>
+                                        <p className='text-green-200 text-sm mt-0.5'>{item.correctAns}</p>
+                                    </div>
+                                    <div className='p-3 border border-indigo-500/30 rounded-xl bg-indigo-500/10'>
+                                        <span className='text-xs font-medium text-indigo-400 uppercase tracking-wider'>Feedback</span>
+                                        <p className='text-indigo-200 text-sm mt-0.5'>{item.feedback}</p>
+                                    </div>
                                 </div>
                             </CollapsibleContent>
                         </Collapsible>
                     ))}
                 </>
             }
-            <Button className='bg-blue-700 text-white' onClick={() => router.replace('/dashboard')}>Go Home</Button>
+
+            <Button
+                className='mt-8 bg-indigo-600 hover:bg-indigo-500 text-white border-0 px-6'
+                onClick={() => router.replace('/dashboard')}
+            >
+                Go Home
+            </Button>
         </div>
     )
 }

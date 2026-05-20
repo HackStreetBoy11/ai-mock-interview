@@ -1,0 +1,29 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="prepGradient" x1="200" y1="150" x2="500" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#26B6FF"/>
+      <stop offset="1" stop-color="#0A2DFF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="800" fill="white"/>
+
+  <!-- Logo Icon -->
+  <path d="M310 180C310 150 334 126 364 126H500C590 126 664 200 664 290C664 380 590 454 500 454H430V520C430 586 376 640 310 640V180Z" fill="url(#prepGradient)"/>
+
+  <!-- Inner Bubble -->
+  <path d="M400 240C400 214 421 193 447 193H500C555 193 600 238 600 293C600 348 555 393 500 393H454L400 447V240Z" fill="white"/>
+
+  <!-- Sparkles -->
+  <path d="M500 255L510 285L540 295L510 305L500 335L490 305L460 295L490 285L500 255Z" fill="#1D7BFF"/>
+  <path d="M555 250L560 265L575 270L560 275L555 290L550 275L535 270L550 265L555 250Z" fill="#1D7BFF"/>
+
+  <!-- Text -->
+  <text x="120" y="740" font-family="Arial, Helvetica, sans-serif" font-size="120" font-weight="700" fill="#02145E">
+    Prep
+  </text>
+  <text x="450" y="740" font-family="Arial, Helvetica, sans-serif" font-size="120" font-weight="700" fill="#1E90FF">
+    Ai
+  </text>
+</svg>
