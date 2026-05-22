@@ -8,59 +8,144 @@ import InterviewItemCard from './InterviewItemCard';
 import { LoaderCircle } from 'lucide-react';
 
 function InterviewList() {
+
     const { user } = useUser();
     const [interviewList, setInterviewList] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+
         const email = user?.primaryEmailAddress?.emailAddress;
         if (!email) return;
 
         const fetchInterviews = async () => {
+
             try {
+
                 const result = await db.select()
                     .from(MockInterview)
                     .where(eq(MockInterview.createdBy, email))
                     .orderBy(desc(MockInterview.id));
+
                 setInterviewList(result);
+
             } catch (err) {
+
                 console.error("Failed to fetch interviews:", err);
+
             } finally {
+
                 setLoading(false);
+
             }
+
         };
 
         fetchInterviews();
+
     }, [user?.primaryEmailAddress?.emailAddress]);
 
     return (
         <div>
-            <div className='flex items-center gap-3 mb-6'>
-                <h2 className='font-semibold text-xl text-white'>Previous Mock Interviews</h2>
+
+            {/* Heading */}
+            <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8'>
+
+                <div>
+
+                    <h2 className='text-4xl font-black bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent'>
+                        Previous Interviews
+                    </h2>
+
+                    <p className='text-slate-400 mt-2 text-sm md:text-base'>
+                        Track your interview practice and improve performance.
+                    </p>
+
+                </div>
+
                 {!loading && interviewList.length > 0 && (
-                    <span className='text-xs text-indigo-300 bg-indigo-500/20 px-2.5 py-1 rounded-full'>
-                        {interviewList.length} total
-                    </span>
+
+                    <div className='inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl border border-cyan-400/20 bg-cyan-500/10 backdrop-blur-xl'>
+
+                        <div className='w-2 h-2 rounded-full bg-cyan-400 animate-pulse'></div>
+
+                        <span className='text-sm font-semibold text-cyan-300'>
+                            {interviewList.length} Interviews
+                        </span>
+
+                    </div>
+
                 )}
+
             </div>
 
+            {/* Loading */}
             {loading ? (
-                <div className='flex items-center gap-2 text-indigo-300 mt-4'>
-                    <LoaderCircle className='animate-spin w-4 h-4' />
-                    <span className='text-sm'>Loading interviews...</span>
+
+                <div className='flex flex-col items-center justify-center py-20 rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-2xl'>
+
+                    <div className='w-16 h-16 rounded-full border border-cyan-400/20 bg-cyan-500/10 flex items-center justify-center mb-5 shadow-[0_0_30px_rgba(34,211,238,0.2)]'>
+
+                        <LoaderCircle className='animate-spin w-8 h-8 text-cyan-400' />
+
+                    </div>
+
+                    <p className='text-lg font-semibold text-white'>
+                        Loading Interviews...
+                    </p>
+
+                    <p className='text-slate-400 text-sm mt-2'>
+                        Please wait while we fetch your interview history.
+                    </p>
+
                 </div>
+
             ) : interviewList.length === 0 ? (
-                <div className='border border-indigo-500/20 rounded-2xl p-10 text-center bg-white/5'>
-                    <p className='text-indigo-300 text-sm'>No interviews yet.</p>
-                    <p className='text-indigo-400/60 text-xs mt-1'>Create one above to get started.</p>
+
+                /* Empty State */
+                <div className='relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-[#0f172a] via-[#111827] to-[#1e1b4b] p-14 text-center shadow-[0_0_60px_rgba(59,130,246,0.15)]'>
+
+                    {/* Glow */}
+                    <div className='absolute top-0 right-0 w-56 h-56 bg-cyan-500/10 blur-3xl rounded-full'></div>
+                    <div className='absolute bottom-0 left-0 w-56 h-56 bg-purple-500/10 blur-3xl rounded-full'></div>
+
+                    <div className='relative z-10'>
+
+                        <div className='w-24 h-24 mx-auto rounded-[28px] bg-gradient-to-r from-cyan-500 to-purple-600 flex items-center justify-center text-4xl shadow-[0_0_40px_rgba(59,130,246,0.3)]'>
+                            ✨
+                        </div>
+
+                        <h3 className='text-3xl font-black text-white mt-8'>
+                            No Interviews Yet
+                        </h3>
+
+                        <p className='text-slate-400 mt-4 max-w-md mx-auto leading-relaxed'>
+                            Start your first AI-powered mock interview and
+                            track your progress like a pro.
+                        </p>
+
+                    </div>
+
                 </div>
+
             ) : (
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+
+                /* Cards */
+                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6'>
+
                     {interviewList.map((interview) => (
-                        <InterviewItemCard interview={interview} key={interview.id} />
+
+                        <InterviewItemCard
+                            interview={interview}
+                            key={interview.id}
+                        />
+
                     ))}
+
                 </div>
+
             )}
+
         </div>
     )
 }
