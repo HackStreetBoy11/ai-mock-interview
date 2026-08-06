@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 PrepAI – AI-Powered Mock Interview Platform
 
-## Getting Started
+PrepAI is an AI-powered mock interview platform that helps users prepare for technical interviews by generating personalized interview questions and providing instant AI-driven feedback on their answers.
 
-First, run the development server:
+## ✨ Features
+
+- 🤖 AI-generated interview questions based on:
+  - Tech Stack
+  - Job Description
+  - Experience Level
+- 🎤 Real-time mock interview experience
+- 📊 AI-powered answer evaluation
+- ⭐ Performance rating for every interview
+- 💡 Detailed feedback and improvement suggestions
+- 🔐 Secure authentication with Clerk
+- 📱 Responsive and modern UI
+
+## 🛠️ Tech Stack
+
+### Frontend
+- Next.js
+- React
+- Tailwind CSS
+
+### Authentication
+- Clerk
+
+### AI
+- Groq API (Compound Beta Mini)
+
+### Deployment
+- Vercel
+
+## 📂 Project Structure
+
+```
+PrepAI/
+├── app/
+├── components/
+├── lib/
+├── public/
+├── styles/
+├── utils/
+├── package.json
+└── README.md
+```
+
+## ⚙️ Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/your-username/prepai.git
+```
+
+### Navigate to the project
+
+```bash
+cd prepai
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Create a `.env.local` file
+
+```env
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_key
+CLERK_SECRET_KEY=your_key
+
+GROQ_API_KEY=your_key
+```
+
+### Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open **http://localhost:3000** in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📖 How It Works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Sign in using Clerk Authentication.
+2. Enter your:
+   - Tech Stack
+   - Job Role
+   - Experience Level
+3. PrepAI generates 5 personalized interview questions.
+4. Answer each question.
+5. AI evaluates your responses.
+6. Receive:
+   - Overall Rating
+   - Detailed Feedback
+   - Improvement Suggestions
 
-## Learn More
+## 🎯 Future Improvements
 
-To learn more about Next.js, take a look at the following resources:
+- Voice-based interviews
+- Webcam support
+- Resume-based question generation
+- Interview history dashboard
+- Multiple AI models
+- Coding interview mode
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contributions are welcome!
 
-## Deploy on Vercel
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push the branch
+5. Open a Pull Request
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License.
+
+## 👨‍💻 Author
+
+**Varun Sammal**
+
+- GitHub: https://github.com/HackStreetBoy11
+- LinkedIn: https://linkedin.com/in/varun-sammal-771122256
+
+---
+
+⭐ If you like this project, don't forget to give it a star!
